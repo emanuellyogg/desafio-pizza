@@ -1,9 +1,15 @@
-//TODO capturar os dados inseridos na tela
-
-var btIncluirPizza = document.querySelector("#")
+var btIncluirPizza = document.querySelector("#btIncluirPizza")
 
 btIncluirPizza.addEventListener("click", function(event){
   event.preventDefault();
+
+  var nomePizza = document.querySelector("#nomePizza").value;
+
+  var tamanhoPizza = document.querySelector("#tamanhoPizza").value;
+
+  var precoPizza = document.querySelector("#precoPizza").value;
+
+
 })
 
 // TODO armazenar esses dados em array
