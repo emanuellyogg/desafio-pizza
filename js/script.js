@@ -1,23 +1,34 @@
+var arrayPizza = [];
 var btIncluirPizza = document.querySelector("#btIncluirPizza")
 
 btIncluirPizza.addEventListener("click", function(event){
   event.preventDefault();
 
   var nomePizza = document.querySelector("#nomePizza").value;
+  var tamanhoPizza = document.querySelector("#tamanhoPizza");
+  var precoPizza = document.querySelector("#precoPizza");
 
-  var tamanhoPizza = document.querySelector("#tamanhoPizza").value;
+  tamanhoPizza = Number(tamanhoPizza.value);
+  precoPizza = Number(precoPizza.value);
 
-  var precoPizza = document.querySelector("#precoPizza").value;
+  var dadosPizza = {
+    nome: nomePizza,
+    tamanho: tamanhoPizza,
+    preco: precoPizza,
+    precoPorCm: 10,
+    diferenca: 10
+  }
 
-
+  arrayPizza.push(dadosPizza);
 })
 
-// TODO armazenar esses dados em array
 
-//  TODO exibir os dados capturados
+
 
 // TODO calcular o valor por cm²
 
+// TODO calcular o percentual de diferença do preço de um tamanho para o outro. 
+
 // TODO ordenar a lista do mais barato ao mais caro
 
-// TODO calcular o percentual de diferença do preço de um tamanho para o outro. 
+//  TODO exibir os dados capturados
