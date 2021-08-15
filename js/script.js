@@ -30,7 +30,7 @@ btIncluirPizza.addEventListener("click", function(event){
       return true;
     }
   });
-
+  calcularDif();
   showResult();
 });
 
@@ -41,6 +41,17 @@ function calculaPreco(tam, preco) {
   areaPizza = Math.PI * (tam / 2);
   precoCm = preco / areaPizza;
   return precoCm;
+}
+
+function calcularDif(params) {
+  for (let index = 0; index < arrayPizza.length; index++) {
+    var valorPrimPizza = arrayPizza[index-1]?.precoPorCm;
+    var valorSegPizza = arrayPizza[index]?.precoPorCm;
+
+    if (index > 0) { 
+      arrayPizza[index].diferenca = (valorSegPizza - valorPrimPizza) / valorPrimPizza * 100;
+    }
+  }
 }
 
 function showResult() {
@@ -81,9 +92,6 @@ function limparTela() {
   document.querySelector("#precoPizza").value = "";
 }
 
-
-
-// TODO calcular o percentual de diferença do preço de um tamanho para o outro. 
 
 // TODO exibir o valor apenas 2 casas decimais
 
