@@ -21,8 +21,9 @@ btIncluirPizza.addEventListener("click", function(event){
   }
 
   arrayPizza.push(dadosPizza);
-
-  showResult(dadosPizza);
+  limparTela();
+  
+  showResult();
 })
 
 function calculaPreco(tam, preco) {
@@ -34,11 +35,15 @@ function calculaPreco(tam, preco) {
   return precoCm;
 }
 
-function showResult(pizza) {
-  var pizzaTr = montaTr(pizza); 
-
+function showResult() {
   var tBody = document.getElementById("tbodyPizza");
-  tBody.appendChild(pizzaTr);
+
+  for (let index = 0; index < arrayPizza.length; index++) {
+    const pizza = arrayPizza[index];
+
+    var pizzaTr = montaTr(pizza); 
+    tBody.appendChild(pizzaTr);
+  }
 }
 
 function montaTr(pizza){
@@ -59,6 +64,13 @@ function montaTd(dado){
   pizzaTd.textContent = dado;
 
   return pizzaTd;
+}
+
+function limparTela() {
+  document.getElementById("tbodyPizza").innerHTML = "";
+  document.querySelector("#nomePizza").value = "";
+  document.querySelector("#tamanhoPizza").value = "";
+  document.querySelector("#precoPizza").value = "";
 }
 
 // TODO ordenar a lista do mais barato ao mais caro
