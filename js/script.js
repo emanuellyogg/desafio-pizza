@@ -43,10 +43,12 @@ function calculaPreco(tam, preco) {
   return precoCm;
 }
 
-function calcularDif(params) {
+function calcularDif() {
   for (let index = 0; index < arrayPizza.length; index++) {
     var valorPrimPizza = arrayPizza[index-1]?.precoPorCm;
     var valorSegPizza = arrayPizza[index]?.precoPorCm;
+
+    arrayPizza[index].ranking = index+1;
 
     if (index > 0) { 
       arrayPizza[index].diferenca = (valorSegPizza - valorPrimPizza) / valorPrimPizza * 100;
@@ -70,10 +72,10 @@ function montaTr(pizza){
 
   pizzaTr.appendChild(montaTd(pizza.ranking));
   pizzaTr.appendChild(montaTd(pizza.nome));
-  pizzaTr.appendChild(montaTd(pizza.tamanho));
-  pizzaTr.appendChild(montaTd(pizza.preco));
-  pizzaTr.appendChild(montaTd(pizza.precoPorCm));
-  pizzaTr.appendChild(montaTd(pizza.diferenca));
+  pizzaTr.appendChild(montaTd(pizza.tamanho + " cm"));
+  pizzaTr.appendChild(montaTd("R$ " + pizza.preco.toFixed(2).toString().replace(".", ",")));
+  pizzaTr.appendChild(montaTd("R$ " + pizza.precoPorCm.toFixed(2).toString().replace(".", ",")));
+  pizzaTr.appendChild(montaTd(pizza.diferenca.toFixed(0) + " %"));
 
   return pizzaTr;
 }
@@ -91,9 +93,3 @@ function limparTela() {
   document.querySelector("#tamanhoPizza").value = "";
   document.querySelector("#precoPizza").value = "";
 }
-
-
-// TODO exibir o valor apenas 2 casas decimais
-
-//  TODO exibir o número do ranking da lista 
-
