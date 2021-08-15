@@ -12,30 +12,56 @@ btIncluirPizza.addEventListener("click", function(event){
   precoPizza = Number(precoPizza.value);
 
   var dadosPizza = {
+    ranking: 0,
     nome: nomePizza,
     tamanho: tamanhoPizza,
     preco: precoPizza,
     precoPorCm: calculaPreco(tamanhoPizza, precoPizza),
-    diferenca: 10
+    diferenca: 0
   }
 
   arrayPizza.push(dadosPizza);
-  console.log(arrayPizza);
+
+  showResult(dadosPizza);
 })
 
 function calculaPreco(tam, preco) {
   
   let areaPizza = 0;
   let precoCm = 0;
-  let arredPreco = 0;
   areaPizza = Math.PI * (tam / 2);
   precoCm = preco / areaPizza;
-  arredPreco = precoCm.toFixed(2);
-  return arredPreco;
+  return precoCm;
+}
+
+function showResult(pizza) {
+  var pizzaTr = montaTr(pizza); 
+
+  var tBody = document.getElementById("tbodyPizza");
+  tBody.appendChild(pizzaTr);
+}
+
+function montaTr(pizza){
+  let pizzaTr = document.createElement("tr");
+
+  pizzaTr.appendChild(montaTd(pizza.ranking));
+  pizzaTr.appendChild(montaTd(pizza.nome));
+  pizzaTr.appendChild(montaTd(pizza.tamanho));
+  pizzaTr.appendChild(montaTd(pizza.preco));
+  pizzaTr.appendChild(montaTd(pizza.precoPorCm));
+  pizzaTr.appendChild(montaTd(pizza.diferenca));
+
+  return pizzaTr;
+}
+
+function montaTd(dado){
+  let pizzaTd = document.createElement("td");
+  pizzaTd.textContent = dado;
+
+  return pizzaTd;
 }
 
 // TODO ordenar a lista do mais barato ao mais caro
 
 // TODO calcular o percentual de diferença do preço de um tamanho para o outro. 
 
-//  TODO exibir os dados capturados
