@@ -1,5 +1,5 @@
 var arrayPizza = [];
-var btIncluirPizza = document.querySelector("#btIncluirPizza")
+var btIncluirPizza = document.querySelector("#btIncluirPizza");
 
 btIncluirPizza.addEventListener("click", function(event){
   event.preventDefault();
@@ -23,8 +23,16 @@ btIncluirPizza.addEventListener("click", function(event){
   arrayPizza.push(dadosPizza);
   limparTela();
   
+  arrayPizza.sort(function(a, b) {
+    if(a.precoPorCm < b.precoPorCm) {
+      return -1;
+    } else {
+      return true;
+    }
+  });
+
   showResult();
-})
+});
 
 function calculaPreco(tam, preco) {
   
@@ -73,7 +81,11 @@ function limparTela() {
   document.querySelector("#precoPizza").value = "";
 }
 
-// TODO ordenar a lista do mais barato ao mais caro
+
 
 // TODO calcular o percentual de diferença do preço de um tamanho para o outro. 
+
+// TODO exibir o valor apenas 2 casas decimais
+
+//  TODO exibir o número do ranking da lista 
 
