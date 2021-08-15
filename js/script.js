@@ -15,20 +15,27 @@ btIncluirPizza.addEventListener("click", function(event){
     nome: nomePizza,
     tamanho: tamanhoPizza,
     preco: precoPizza,
-    precoPorCm: 10,
+    precoPorCm: calculaPreco(tamanhoPizza, precoPizza),
     diferenca: 10
   }
 
   arrayPizza.push(dadosPizza);
+  console.log(arrayPizza);
 })
 
-
-
-
-// TODO calcular o valor por cm²
-
-// TODO calcular o percentual de diferença do preço de um tamanho para o outro. 
+function calculaPreco(tam, preco) {
+  
+  let areaPizza = 0;
+  let precoCm = 0;
+  let arredPreco = 0;
+  areaPizza = Math.PI * (tam / 2);
+  precoCm = preco / areaPizza;
+  arredPreco = precoCm.toFixed(2);
+  return arredPreco;
+}
 
 // TODO ordenar a lista do mais barato ao mais caro
+
+// TODO calcular o percentual de diferença do preço de um tamanho para o outro. 
 
 //  TODO exibir os dados capturados
