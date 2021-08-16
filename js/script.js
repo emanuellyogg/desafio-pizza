@@ -125,3 +125,11 @@ function limparTela() {
   document.querySelector("#tamanhoPizza").value = "";
   document.querySelector("#precoPizza").value = "";
 }
+
+function btlimparTabela() {
+  const confirma = window.confirm("Limpar a tabela de resultado?");
+            
+  if (confirma) {        
+    document.getElementById("tbodyPizza").innerHTML = ""; 
+  }
+}
