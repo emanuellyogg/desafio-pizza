@@ -77,13 +77,13 @@ function calculaPreco(tam, preco) {
 
 function calcularDif() {
   for (let index = 0; index < arrayPizza.length; index++) {
-    var valorPrimPizza = arrayPizza[index-1]?.precoPorCm;
-    var valorSegPizza = arrayPizza[index]?.precoPorCm;
+    var pizzaA = arrayPizza[index-1]?.precoPorCm;
+    var pizzaB = arrayPizza[index]?.precoPorCm;
 
     arrayPizza[index].ranking = index+1;
 
     if (index > 0) { 
-      arrayPizza[index].diferenca = (valorSegPizza - valorPrimPizza) / valorPrimPizza * 100;
+      arrayPizza[index].diferenca = (pizzaB - pizzaA) / pizzaA * 100;
     }
   }
 }
@@ -131,5 +131,6 @@ function btlimparTabela() {
             
   if (confirma) {        
     document.getElementById("tbodyPizza").innerHTML = ""; 
+    arrayPizza = [];
   }
 }
