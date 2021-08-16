@@ -20,16 +20,19 @@ btIncluirPizza.addEventListener("click", function(event){
     diferenca: 0
   }
 
-  const verificarTamanho = arrayPizza.filter(pizza => (pizza.tamanho == tamanhoPizza));
-
-  if (verificarTamanho.length > 0) {
-    alert("Já existe uma pizza com o mesmo tamanho");
+  if (verificaTamanhoExiste(tamanhoPizza)) {
     return;
   }
 
   arrayPizza.push(dadosPizza);
+
   limparTela();
-  
+  ordenarLista();
+  calcularDif();
+  showResult();
+});
+
+function ordenarLista() {
   arrayPizza.sort(function(a, b) {
     if(a.precoPorCm < b.precoPorCm) {
       return -1;
@@ -37,9 +40,17 @@ btIncluirPizza.addEventListener("click", function(event){
       return true;
     }
   });
-  calcularDif();
-  showResult();
-});
+}
+
+function verificaTamanhoExiste(tamanhoPizza) {
+  const existe = arrayPizza.filter(pizza => (pizza.tamanho == tamanhoPizza));
+  if (existe.length > 0) {
+    alert("Já existe uma pizza com o mesmo tamanho");
+    return true;
+  } else {
+    return false;
+  }
+}
 
 function calculaPreco(tam, preco) {
   
