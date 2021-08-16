@@ -20,6 +20,13 @@ btIncluirPizza.addEventListener("click", function(event){
     diferenca: 0
   }
 
+  const verificarTamanho = arrayPizza.filter(pizza => (pizza.tamanho == tamanhoPizza));
+
+  if (verificarTamanho.length > 0) {
+    alert("Já existe uma pizza com o mesmo tamanho");
+    return;
+  }
+
   arrayPizza.push(dadosPizza);
   limparTela();
   
