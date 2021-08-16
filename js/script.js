@@ -11,6 +11,10 @@ btIncluirPizza.addEventListener("click", function(event){
   tamanhoPizza = Number(tamanhoPizza.value);
   precoPizza = Number(precoPizza.value);
 
+  if (validarCampos(nomePizza, tamanhoPizza, precoPizza)) {
+    return;
+  }
+
   var dadosPizza = {
     ranking: 0,
     nome: nomePizza,
@@ -31,6 +35,15 @@ btIncluirPizza.addEventListener("click", function(event){
   calcularDif();
   showResult();
 });
+
+function validarCampos(nome, tamanho, preco) {
+  if (nome == 0 || tamanho == 0 || preco == 0) {
+    alert("O preenchimento de todos os campos é obrigatório");
+    return true;
+  } else {
+    return false
+  }
+}
 
 function ordenarLista() {
   arrayPizza.sort(function(a, b) {
@@ -58,6 +71,7 @@ function calculaPreco(tam, preco) {
   let precoCm = 0;
   areaPizza = Math.PI * (tam / 2);
   precoCm = preco / areaPizza;
+
   return precoCm;
 }
 
